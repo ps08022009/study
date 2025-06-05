@@ -130,6 +130,13 @@ export default function Home() {
     setStudyLog(prevLog => prevLog.filter(entry => entry.id !== entryId));
   };
 
+  const handleCompleteTask = (taskId: string) => {
+    const updatedBadges = badges.map(badge => 
+      badge.id === taskId ? { ...badge, completed: true } : badge
+    );
+    setBadges(updatedBadges);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col items-center p-8">
       {showNotification && newBadge && (
